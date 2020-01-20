@@ -23,8 +23,11 @@
             <li routerLinkActive="active" *ngIf="!isauthenticated"><a routerLink="/signup">Signup</a></li>
             <li routerLinkActive="active" *ngIf="isauthenticated"><a routerLink="/display">Display</a></li>
             <li routerLinkActive="active" *ngIf="isauthenticated"><a routerLink="/enter">Enter</a></li>
+            <li>
+              <a [routerLink]="" *ngIf="isauthenticated" (click) = "logout()">Logout</a>
+            </li>
           </ul>
-          <button type="button" class="btn btn-default navbar-btn" *ngIf="isauthenticated" (click) = "logout()">Logout</button>
+          
   
         </div><!-- /.navbar-collapse -->
       </div><!-- /.container-fluid -->

@@ -11,6 +11,7 @@ import { SignupComponent } from './signup/signup.component';
 import { AuthService } from './auth.service';
 import { HttpService } from './http.service';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
+import { AuthGuard } from './auth.guard';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,7 @@ import { HttpClientModule, HttpClient } from '@angular/common/http';
     FormsModule,
     HttpClientModule
   ],
-  providers: [AuthService, HttpService],
+  providers: [AuthService,HttpService, AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

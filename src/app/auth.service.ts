@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpService } from './http.service';
 import { User } from './model/User';
-import { throwError , Subject } from 'rxjs';
+import {ResponseMessage} from './model/ResponseMessage';
+import { throwError , Subject, BehaviorSubject } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { Router } from '@angular/router';
 
@@ -10,7 +11,7 @@ import { Router } from '@angular/router';
 })
 export class AuthService {
 
-  userSubject = new Subject<User>();
+  userSubject = new BehaviorSubject<User>(null);
   signupComplete = false;
   signUpErrorMessage = "";
   loginError = "";
@@ -34,7 +35,12 @@ export class AuthService {
     },
     err=>{
       console.log(err.error);
-      this.loginError = err.error.message;
+      if(err.error instanceof ResponseMessage){
+         this.loginError = err.error.message;
+      }
+      else{
+        this.loginError = "Unknown error while logging in";
+      }
       console.log(this.loginError);
     })
 
@@ -43,6 +49,7 @@ export class AuthService {
 
     
   signupRequest(signUpUser:User){
+    this.loginError = "";
     this.signUpErrorMessage= "";
     this.httpService.signupRequest(signUpUser).subscribe(
       data=>{

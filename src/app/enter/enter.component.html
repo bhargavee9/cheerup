@@ -1,7 +1,8 @@
-<form action="/action_page.php" class="col-md-9">
+<p *ngIf="!!status && !enterform.dirty" class="alert alert-warning">{{status}}</p> 
+<form class="col-md-9" (ngSubmit)="onSubmit(enterform)"  #enterform=ngForm>
     <div class="form-group">
       <label for="MoodSelect">I'm feeling </label>
-      <select class="form-control" id="exampleSelect1">
+      <select class="form-control" ngModel name="selectedfeeling">
         <option>Happy</option>
         <option>Grateful</option>
         <option>Inspired</option>
@@ -13,7 +14,7 @@
     </div>
   <div class="form-group">
     <label for="comment">Save your Moment !</label>
-    <textarea class="form-control" rows="5" id="comment"></textarea>
+    <textarea class="form-control" rows="5" name="comment" ngModel></textarea>
     <button type="submit" class="btn btn-primary">Submit</button>
   </div>
   </form>

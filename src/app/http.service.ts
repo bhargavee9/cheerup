@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpErrorResponse, HttpParams } from '@angular/common/http';
 import { Observable, throwError} from 'rxjs';
 import {User} from "./model/User";
+import {Moment} from "./model/Moment";
 import {catchError} from 'rxjs/operators';
 import {ResponseMessage} from "./model/ResponseMessage";
 @Injectable({
@@ -10,6 +11,8 @@ import {ResponseMessage} from "./model/ResponseMessage";
 export class HttpService{
 
   baseurl = 'https://cheerupbackend.herokuapp.com/';
+  
+  //baseurl = 'http://localhost:8080/';
 
 
   constructor(private http: HttpClient) { }
@@ -32,4 +35,18 @@ export class HttpService{
     private  handleError(errorData : HttpErrorResponse){
                return throwError(errorData);
       }
+
+    postMoment(username:string , moment:Moment){
+      let url = this.baseurl +`${username}/moment`;
+      return this.http.post<ResponseMessage>(url, moment,{headers:this.httpheaders})
+      .pipe(catchError(this.handleError));
+
+    }
+
+    getMoment(username:string){
+      let url = this.baseurl + `${username}/moment`;
+      return this.http.get<Moment>(url)
+      .pipe(catchError(this.handleError));
+
+    }
 }

@@ -14,10 +14,14 @@ export class AppComponent {
 
   }
   ngOnInit(){
+    console.log("ngon init appcomponent");
      this.authService.userSubject.subscribe(user=>{
-       console.log("subscribed user "+user.username);
+     //  console.log("subscribed user "+user.username);
       this.isauthenticated = !!user;
-      console.log("authenticated " +this.isauthenticated);
+      //console.log("authenticated " +this.isauthenticated);
+     },
+     err=>{
+       console.log("error");
      });
   }
 
