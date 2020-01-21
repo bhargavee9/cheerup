@@ -43,10 +43,8 @@ export class EnterComponent implements OnInit {
          this.router.navigate(['/enter']);
         },
       err=>{
-          this.status =err.error.message;
-          if(this.status){
-            this.status = "Unknown error while saving data !Try again later"
-          }
+        this.status = this.httpService.error;
+        console.log(this.status);
      })
 
   }

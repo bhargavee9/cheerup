@@ -33,12 +33,10 @@ export class DisplayComponent implements OnInit {
          this.feeling= data.feeling;
          this.description = data.description;
         },
-      err=>{
-          this.status =err.error.message;
-          if(this.status){
-            this.status = "Unknown error while retrieving data !Try again later"
-          }
-     }) 
+        err=>{
+          this.status = this.httpService.error;
+          console.log(this.status);
+       }) 
 
 
   }

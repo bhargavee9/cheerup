@@ -34,13 +34,9 @@ export class AuthService {
        this.router.navigate(['/enter']);
     },
     err=>{
-      console.log(err.error);
-      if(err.error instanceof ResponseMessage){
-         this.loginError = err.error.message;
-      }
-      else{
-        this.loginError = "Unknown error while logging in";
-      }
+      console.log("this.httpservice.error");
+      console.log(this.httpService.error);
+      this.loginError = this.httpService.error;
       console.log(this.loginError);
     })
 
@@ -57,7 +53,7 @@ export class AuthService {
          this.router.navigate(['/login']);
         },
       err=>{
-          this.signUpErrorMessage =err.error.message;
+          this.signUpErrorMessage = this.httpService.error;
           console.log(this.signUpErrorMessage);
 
      })
