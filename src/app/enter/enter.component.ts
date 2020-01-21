@@ -30,7 +30,7 @@ export class EnterComponent implements OnInit {
 
 
   onSubmit(enterForm:NgForm){
-    status = "";
+    this.status = "";
     const feeling = enterForm.value.selectedfeeling;
     const comment = enterForm.value.comment;
     let moment:Moment = new Moment();
@@ -39,7 +39,7 @@ export class EnterComponent implements OnInit {
     this.httpService.postMoment(this.user.username,moment).subscribe(
       data=>{
          enterForm.reset();
-         status = "This moment is saved ! ";
+         this.status = "This moment is saved ! ";
          this.router.navigate(['/enter']);
         },
       err=>{
