@@ -12,6 +12,7 @@ import { AuthService } from './auth.service';
 import { HttpService } from './http.service';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { AuthGuard } from './auth.guard';
+import { DisplayallComponent } from './displayall/displayall.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { AuthGuard } from './auth.guard';
     LoginComponent,
     EnterComponent,
     DisplayComponent,
-    SignupComponent
+    SignupComponent,
+    DisplayallComponent
   ],
   imports: [
     BrowserModule,

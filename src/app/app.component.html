@@ -1,7 +1,7 @@
+<!-- Developed by Bhargavee Koduri-->
 <div class="container" col-md-6>
   <div class="jumbotron">
-    <h1 class="display-4">Cheerup !</h1>
-    <p class="lead">Never forget a happy moment</p>
+    <h1 class="display-4">My Journal !</h1>
   </div>
     <nav class="navbar navbar-default">
       <div class="container-fluid">
@@ -22,6 +22,7 @@
             <li routerLinkActive="active" *ngIf="!isauthenticated"><a routerLink="/login">Login</a></li>
             <li routerLinkActive="active" *ngIf="!isauthenticated"><a routerLink="/signup">Signup</a></li>
             <li routerLinkActive="active" *ngIf="isauthenticated"><a routerLink="/display">Display</a></li>
+            <li routerLinkActive="active" *ngIf="isauthenticated"><a routerLink="/displayall">DisplayAll</a></li>
             <li routerLinkActive="active" *ngIf="isauthenticated"><a routerLink="/enter">Enter</a></li>
             <li>
               <a [routerLink]="" *ngIf="isauthenticated" (click) = "logout()">Logout</a>
@@ -34,6 +35,8 @@
     </nav>
     <router-outlet></router-outlet>
   </div>
+  <div class="container col-md-offset-9">
+    <p>Developed by Bhargavee Koduri</p>
+  </div>
   
-  
-  
+ 
